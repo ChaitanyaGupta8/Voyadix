@@ -4,7 +4,6 @@ import './Plan.css'; // Reusing your existing styles
 const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
 export default function AuthModal({ initialMode, onClose, onLoginSuccess }) {
-  // Use initialMode to determine if e.g. initialMode === 'login'
   const [isLogin, setIsLogin] = useState(initialMode === 'login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

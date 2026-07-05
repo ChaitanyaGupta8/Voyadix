@@ -2,13 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from 'react-leaflet';
 import L from 'leaflet';
-import 'leaflet/dist/leaflet.css'; // CRITICAL: Required for the map to render correctly
+import 'leaflet/dist/leaflet.css'; 
 import './Plan.css';
 
 const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
-
-// Fix for default Leaflet marker icons missing in React
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 let DefaultIcon = L.icon({
@@ -21,7 +19,6 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 const CATEGORIES = ['Adventure', 'Culture', 'Beaches', 'Culinary', 'Urban', 'Nature'];
 
-// Helper component to auto-zoom the map to fit all points
 function MapController({ coordinates }) {
   const map = useMap();
   if (coordinates && coordinates.length > 0) {
@@ -30,23 +27,18 @@ function MapController({ coordinates }) {
   }
   return null;
 }
-// 1. Add `initialPrompt` to the incoming props
+
+
 export default function Plan({ onNavigateHome, initialPrompt }) {
   
-  // 2. Set your starting prompt state to be whatever the user typed on the home page!
   const [prompt, setPrompt] = useState(initialPrompt || '');
-
   const [activeCategory, setActiveCategory] = useState('Culture');
- 
   const [loading, setLoading] = useState(false);
   
-  // FIXED: Start with null so the UI is blank until the user searches
   const [itinerary, setItinerary] = useState(null);
   
-  // State for OSRM street routing
   const [streetRoutes, setStreetRoutes] = useState({});
 
-  // Connect to FastAPI Backend
   const handleOptimize = async () => {
     if (!prompt) return;
     setLoading(true);
@@ -81,7 +73,6 @@ export default function Plan({ onNavigateHome, initialPrompt }) {
               desc: evt.description || 'Details coming soon.',
               lat: evt.latitude,
               lng: evt.longitude,
-              // FIXED: Dynamic Unsplash thumbnail fallback based on the location name
               img: evt.image_url || `https://source.unsplash.com/150x150/?${encodeURIComponent(evt.name + ' ' + evt.category)}` 
             }))
           };
@@ -127,7 +118,7 @@ export default function Plan({ onNavigateHome, initialPrompt }) {
     else alert("Failed to save trip.");
   };
 
-  // Fetch OSRM street routes when the itinerary changes
+
   useEffect(() => {
     if (!itinerary || !itinerary.days) return;
 
@@ -137,7 +128,6 @@ export default function Plan({ onNavigateHome, initialPrompt }) {
       for (const dayData of itinerary.days) {
         if (dayData.events.length < 2) continue;
 
-        // Ensure we only use events that have coordinates
         const validEvents = dayData.events.filter(evt => evt.lat && evt.lng);
         if (validEvents.length < 2) continue;
 
@@ -166,7 +156,6 @@ export default function Plan({ onNavigateHome, initialPrompt }) {
     fetchStreetRoutes();
   }, [itinerary]);
 
-  // Extract all coordinates for the map bounds controller
   const getAllCoordinates = () => {
     if (!itinerary || !itinerary.days) return [];
     const coords = [];
@@ -181,7 +170,6 @@ export default function Plan({ onNavigateHome, initialPrompt }) {
   return (
     <div className="plan-container">
       {/* Header */}
-      {/* Header for Plan.jsx */}
       <header className="site-header">
         <div className="logo-container" onClick={onNavigateHome} style={{ cursor: 'pointer' }}>
           <div className="logo-icon">V</div>

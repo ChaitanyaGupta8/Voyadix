@@ -12,14 +12,14 @@ class ItineraryOptimizer:
         if recommended_pois.empty:
             return {}
 
-        # 1. Convert our POI DataFrame into a list of dictionaries for row manipulation
+        # Convert our POI DataFrame into a list of dictionaries for row manipulation
         pois = recommended_pois.to_dict(orient='records')
         
         # Limit our maximum stops to fit a realistic schedule (e.g., max 3 stops per day)
         max_stops = duration_days * 3
         pois = pois[:max_stops]
 
-        # 2. Assign POIs to days using basic spatial grouping
+        #  Assign POIs to days using basic spatial grouping
         # Sort by latitude so locations close to each other North/South get grouped together
         pois = sorted(pois, key=lambda x: x['latitude'])
         
@@ -32,7 +32,7 @@ class ItineraryOptimizer:
             assigned_day = (idx % duration_days) + 1
             itinerary[f"Day {assigned_day}"].append(poi)
 
-        # 3. Optimize the sequence within each day (Greedy Routing Heuristic)
+        # Optimize the sequence within each day (Greedy Routing Heuristic)
         for day, day_pois in itinerary.items():
             if not day_pois:
                 continue
@@ -75,7 +75,6 @@ class ItineraryOptimizer:
         return itinerary
 
 if __name__ == "__main__":
-    # Mock data to test our routing calculations
     from recommender import POIRecommender
     import os
 

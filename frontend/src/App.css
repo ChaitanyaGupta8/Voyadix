@@ -23,21 +23,6 @@
   gap: 10px;
 }
 
-/* USE THIS  IF YOU WANT TO SWITCH BACK TO MOUNTAIN/CANYON THEME  */
-/* 
-.logo-icon {
-  background-color: #D97706;
-  color: white;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-} */
-
-/* 1. Change the Logo Box Color */
 .logo-icon {
   background-color: #0D9488; /* Tropical Teal (was #D97706) */
   color: white;
@@ -97,20 +82,9 @@
   font-weight: 500;
 }
 
-/* USE THIS  IF YOU WANT TO SWITCH BACK TO MOUNTAIN/CANYON THEME  */
-/* Hero Section with Search overlay */
-/* .hero-section {
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1800&q=80');
-  background-size: cover;
-  background-position: center;
-  padding: 100px 40px 140px;
-  text-align: center;
-  color: white;
-} */
 
 /* Update this inside src/App.css */
 .hero-section {
-  /* Fresh Tropical Beach Background (Nusa Penida / Thailand vibe) */
   background-image: linear-gradient(rgba(0,15,30,0.2), rgba(0,15,30,0.5)), url('https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1800&q=80');
   background-size: cover;
   background-position: center;
@@ -118,7 +92,6 @@
   text-align: center;
   color: white;
 
-  /* Add these 4 lines to force center alignment */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -224,21 +197,8 @@
   background-color: #EAEAEA;
 }
 
-/* USE THIS  IF YOU WANT TO SWITCH BACK TO MOUNTAIN/CANYON THEME  */
-/* .search-submit-btn {
-  background-color: #064E3B;
-  color: white;
-  border: none;
-  padding: 16px 32px;
-  border-radius: 16px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 15px;
-} */
-
-/* 2. Change the Search Button Color */
 .search-submit-btn {
-  background-color: #0D9488; /* Tropical Teal (was #064E3B) */
+  background-color: #0D9488; 
   color: white;
   border: none;
   padding: 16px 32px;
@@ -248,7 +208,6 @@
   font-size: 15px;
 }
 
-/* Numbers Dashboard Strip */
 .metrics-section {
   background-color: #111111;
   color: white;
@@ -271,7 +230,6 @@
   margin: 0;
 }
 
-/* Places Worth Packing For Track Styles */
 .carousel-section {
   padding: 80px 80px;
 }
@@ -458,7 +416,7 @@
 }
 
 .ai-plan-btn:hover {
-  background-color: #0F766E; /* Slightly darker teal on hover */
+  background-color: #0F766E; 
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(13, 148, 136, 0.4);
 }

@@ -1,5 +1,3 @@
-
-
 import os
 import sys
 import re
@@ -14,23 +12,21 @@ from sqlalchemy.orm import Session
 from passlib.context import CryptContext
 from jose import JWTError, jwt
 
-# App path fixing
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
-# Local Engine Imports
 from nlp_engine import TRIPLinguist
 from recommender import DynamicPOIRecommender
 from optimizer import ItineraryOptimizer
 from live_data import LiveDataManager
 
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
+
 # Database Configuration Imports
 from database import engine, get_db, User, Trip
 import database
 
-# --- APP INITIALIZATION ---
 app = FastAPI(title="Voyadix API", version="1.0.0")
 
-# --- AUTHENTICATION CONFIGURATION ---
+# AUTHENTICATION CONFIGURATION 
 SECRET_KEY = "your-super-secret-key-change-this-in-production"  
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
@@ -63,7 +59,6 @@ class UserCreate(BaseModel):
     password: str
 
 # --- DATABASE TABLE CREATION & MIDDLEWARE ---
-# Automatically creates the database file (voyadix.db) and tables on startup
 database.Base.metadata.create_all(bind=database.engine)
 
 app.add_middleware(
@@ -74,27 +69,23 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Core Engines Instances
 linguist = TRIPLinguist()
 recommender = DynamicPOIRecommender()
 optimizer = ItineraryOptimizer()
 live_engine = LiveDataManager()
 
-# --- UTILITY FUNCTIONS ---
 def isolate_true_city(prompt: str, extracted_dest: str) -> str:
     """
     Intelligently extracts the precise destination name.
     """
     clean_prompt = prompt.replace(",", " ").replace(".", " ").strip()
-    
-    # Catches "to bali" even if it's the very last word.
+
     match_to = re.search(r'\bto\s+([a-zA-Z\s]+?)(?:\b(?:in|exploring|for|during|with)\b|$)', clean_prompt, re.IGNORECASE)
     if match_to:
         city = match_to.group(1).strip()
         if city: 
             return city.title()
 
-    # Dynamic global catch for "City in Region"
     match_region = re.search(r'\b([a-zA-Z\s]+?)\s+in\s+([a-zA-Z\s]+)\b', clean_prompt, re.IGNORECASE)
     if match_region:
         city = match_region.group(1).strip()
@@ -152,15 +143,13 @@ async def login_for_access_token(
 @app.post("/generate-itinerary")
 async def generate_itinerary(request: QueryRequest):
     try:
-        # 1. Parse prompt rules
+   
         constraints = linguist.extract_constraints(request.user_prompt)
         raw_destination = constraints["destination"]
         duration = constraints["duration_days"]
         
-        # 2. Run the cleanup filter to resolve the target city name
         target_city = isolate_true_city(request.user_prompt, raw_destination)
         
-        # 3. Run the fully automated Wikipedia Geosearch pipeline
         live_poi_df = live_engine.fetch_live_pois_by_city(target_city, duration_days=duration)
         
         if live_poi_df.empty:
@@ -169,7 +158,6 @@ async def generate_itinerary(request: QueryRequest):
                 detail=f"Could not resolve notable travel hotspots for '{target_city}'. Try adjusting the city name format."
             )
 
-        # 4. Map semantic tags against the retrieved data
         top_matches = recommender.fit_and_recommend(
             df=live_poi_df,
             query=constraints["search_query"],
@@ -177,7 +165,6 @@ async def generate_itinerary(request: QueryRequest):
             top_n=duration * 3
         )
 
-        # 5. Compute the spatio-temporal route layout
         final_schedule = optimizer.generate_plan(
             recommended_pois=top_matches, 
             duration_days=duration
@@ -204,7 +191,6 @@ async def save_trip(
     db: Session = Depends(get_db),
     token: str = Depends(oauth2_scheme)
 ):
-    # 1. Decode the token to get the user's email
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         email: str = payload.get("sub")
@@ -212,10 +198,9 @@ async def save_trip(
     except JWTError:
         raise HTTPException(status_code=401)
 
-    # 2. Find the user
+
     user = db.query(User).filter(User.email == email).first()
     
-    # 3. Create the trip record
     # trip_data should contain: {"destination": "...", "duration": 3, "itinerary": {...}}
     new_trip = Trip(
         destination=trip_data['destination'],
@@ -236,15 +221,13 @@ async def get_my_trips(
     db: Session = Depends(get_db),
     token: str = Depends(oauth2_scheme)
 ):
-    # 1. Decode JWT to get user identity
+
     payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
     email: str = payload.get("sub")
-    
-    # 2. Find user and their associated trips
+
     user = db.query(User).filter(User.email == email).first()
     trips = db.query(Trip).filter(Trip.user_id == user.id).all()
-    
-    # 3. Return a clean list of trips
+
     return [
         {
             "id": trip.id,

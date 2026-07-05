@@ -15,12 +15,8 @@
 }
 .logo-container { display: flex; align-items: center; gap: 10px; }
 
-/* USE THIS  IF YOU WANT TO SWITCH BACK TO MOUNTAIN/CANYON THEME  */
-/* .logo-icon { background: #E46643; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; } */
-
-/* 1. Change the Plan Page Logo */
 .logo-icon { 
-  background: #0D9488; /* Tropical Teal */
+  background: #0D9488;
   color: white; 
   width: 32px; 
   height: 32px; 
@@ -61,17 +57,10 @@
   margin: 10px 0 30px;
 }
 
-/* .highlight-italic {
-  font-style: italic;
-  font-weight: 400;
-  color: #E46643; /* Coral Orange 
-} */
-
-/* 2. Change the italic highlight text (e.g., "one prompt") */
 .highlight-italic {
   font-style: italic;
   font-weight: 400;
-  color: #0D9488; /* Tropical Teal */
+  color: #0D9488;
 }
 
 /* Category Pills */
@@ -122,11 +111,8 @@
   gap: 6px;
 }
 
-/* .sparkle { color: #E46643; } */
-
-/* 3. Change the little sparkle icons */
 .sparkle { 
-  color: #0D9488; /* Tropical Teal */
+  color: #0D9488; 
 }
 
 .prompt-input {
@@ -232,7 +218,7 @@
 }
 
 .day-number {
-  background: #166534; /* Teal */
+  background: #166534; 
   color: white;
   width: 36px;
   height: 36px;
@@ -328,21 +314,17 @@
 .map-controls { position: absolute; top: 20px; left: 20px; display: flex; flex-direction: column; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
 .map-controls button { background: none; border: none; width: 30px; height: 30px; font-size: 20px; cursor: pointer; border-bottom: 1px solid #EEE; }
 .route-path-mockup { position: absolute; bottom: 100px; right: 150px; }
-/* .map-pin { width: 24px; height: 24px; background: #E46643; color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 12px; font-weight: bold; border: 2px solid white; position: absolute; z-index: 2; box-shadow: 0 2px 5px rgba(0,0,0,0.2); } */
 .pin-1 { top: 150px; left: 0; }
 .pin-2 { top: 50px; left: 100px; }
 .pin-3 { top: -50px; left: 80px; }
-/* .map-line { position: absolute; background: #E46643; height: 3px; z-index: 1; } */
 .line-1 { width: 140px; top: 110px; left: 10px; transform: rotate(-35deg); }
 .line-2 { width: 100px; top: 10px; left: 85px; transform: rotate(-80deg); }
 
 
-
-/* 4. Update the Map Pins and Lines (if you are using the mock map styles) */
 .map-pin { 
   width: 24px; 
   height: 24px; 
-  background: #F43F5E; /* Vibrant Coral Pink for contrast */
+  background: #F43F5E; 
   color: white; 
   border-radius: 50%; 
   display: flex; 
@@ -358,7 +340,7 @@
 
 .map-line { 
   position: absolute; 
-  background: #F43F5E; /* Vibrant Coral Pink */
+  background: #F43F5E; 
   height: 3px; 
   z-index: 1; 
 }

@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import MyTrips from './MyTrips';
 import AuthModal from './AuthModal';
 import './App.css'; 
-import Plan from './Plan'; // 👈 FIXED: Added the import for your Plan page
+import Plan from './Plan';
 
 const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
@@ -18,28 +18,28 @@ const DESTINATIONS = [
 function App() {
     const [showAuth, setShowAuth] = useState(false);
     const [authMode, setAuthMode] = useState(null);
-  const [globalPrompt, setGlobalPrompt] = useState('');
-  const [currentPage, setCurrentPage] = useState('home'); // 👈 FIXED: Added the missing state to track the page
-  const [activeTab, setActiveTab] = useState('Hotel');
-  const [formData, setFormData] = useState({
-    destination: '',
-    checkIn: '',
-    checkOut: '',
-    travelers: ''
-  });
+    const [globalPrompt, setGlobalPrompt] = useState('');
+    const [currentPage, setCurrentPage] = useState('home'); 
+    const [activeTab, setActiveTab] = useState('Hotel');
+    const [formData, setFormData] = useState({
+        destination: '',
+        checkIn: '',
+        checkOut: '',
+        travelers: ''
+    });
 
-  const [loading, setLoading] = useState(false);
-  const carouselRef = useRef(null);
+    const [loading, setLoading] = useState(false);
+    const carouselRef = useRef(null);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+    };
 
-  const handleSearchSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    
+    const handleSearchSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        
     try {
       const response = await fetch(`${API_URL}/api/itinerary/generate`, {
         method: 'POST',
@@ -55,28 +55,29 @@ function App() {
 
       const data = await response.json();
       console.log("AI Backend Response:", data);
-    } catch (error) {
+    } 
+    catch (error) {
       console.error("Failed contacting routing engine:", error);
-    } finally {
+    } 
+    finally {
       setLoading(false);
     }
   };
 
-  const scrollCarousel = (direction) => {
-    if (carouselRef.current) {
-      const scrollAmount = 344; 
-      carouselRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      });
-    }
-  };
+    const scrollCarousel = (direction) => {
+        if (carouselRef.current) {
+        const scrollAmount = 344; 
+        carouselRef.current.scrollBy({
+            left: direction === 'left' ? -scrollAmount : scrollAmount,
+            behavior: 'smooth'
+        });
+        }
+    };
 
 //   if (currentPage === 'plan') {
 //     return <Plan onNavigateHome={() => setCurrentPage('home')} />;
 //   }
 
-  // Update your page switcher to pass the initialPrompt
   if (currentPage === 'plan') {
     return <Plan onNavigateHome={() => setCurrentPage('home')} initialPrompt={globalPrompt} />;
   }
@@ -88,7 +89,6 @@ function App() {
   return (
     <div className="app-container">
       {/* Header */}
-      {/* Header for App.jsx */}
       <header className="site-header">
         <div className="logo-container" onClick={() => setCurrentPage('home')} style={{ cursor: 'pointer' }}>
           <div className="logo-icon">V</div>
@@ -114,7 +114,6 @@ function App() {
             Plan
           </button>
 
-          {/* FIXED: Added the onClick handler to switch to My Trips */}
           <button 
             type="button"
             className={`nav-link ${currentPage === 'my-trips' ? 'active' : ''}`} 
@@ -143,73 +142,7 @@ function App() {
             orchestrated by an AI that understands how you move.
           </p>
 
-          {/* <div className="search-container">
-            <div className="tabs-row">
-              {['Hotel', 'Flight', 'Car', 'Event'].map((tab) => (
-                <button
-                  key={tab}
-                  type="button"
-                  className={`tab-btn ${activeTab === tab ? 'active' : ''}`}
-                  onClick={() => setActiveTab(tab)}
-                >
-                  {tab === 'Hotel' && '🏨'}
-                  {tab === 'Flight' && '✈️'}
-                  {tab === 'Car' && '🚗'}
-                  {tab === 'Event' && '🎫'} {tab}
-                </button>
-              ))}
-            </div>
-
-            <form className="search-bar" onSubmit={handleSearchSubmit}>
-              <div className="input-group">
-                <label>DESTINATION</label>
-                <input
-                  type="text"
-                  name="destination"
-                  placeholder="City or destination"
-                  value={formData.destination}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              <div className="ui-divider" />
-              <div className="input-group">
-                <label>CHECK-IN</label>
-                <input
-                  type="date"
-                  name="checkIn"
-                  value={formData.checkIn}
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="ui-divider" />
-              <div className="input-group">
-                <label>CHECK-OUT</label>
-                <input
-                  type="date"
-                  name="checkOut"
-                  value={formData.checkOut}
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="ui-divider" />
-              <div className="input-group">
-                <label>TRAVELERS</label>
-                <input
-                  type="number"
-                  name="travelers"
-                  placeholder="Add guests"
-                  value={formData.travelers}
-                  onChange={handleInputChange}
-                />
-              </div>
-              <button type="submit" className="search-submit-btn" disabled={loading}>
-                {loading ? 'Planning...' : 'Search'}
-              </button>
-            </form>
-          </div> */}
-
-          {/* Update your AI prompt wrapper with this code */}
+         
             <div className="ai-prompt-wrapper">
             <span className="sparkle-icon">✨</span>
             <input 
