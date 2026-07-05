@@ -133,7 +133,7 @@ function App() {
       {/* Hero Platform */}
       <section className="hero-section">
         <div className="hero-content">
-          <span className="pill-badge">✦ PONTON TREVILO ✦</span>
+          <span className="pill-badge">✦ YOUR PRESONAL CONCIERGE ✦</span>
           <h1 className="hero-title">
             Discover the magic in <em>every</em><br />destination with us.
           </h1>
