@@ -80,7 +80,7 @@ npm run dev
 
 ---
 
-## 🏗️rchitecture & System Flow
+## Architecture & System Flow
 
 Voyadix uses a decoupled client-server architecture to ensure high performance and separation of concerns:
 
