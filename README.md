@@ -48,7 +48,7 @@ If you would like to run this project locally, follow these steps:
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/](https://github.com/)[YOUR-USERNAME]/voyadix.git
+git clone https://github.com/ChaitanyaGupta8/Voyadix.git
 cd voyadix
 ```
 
@@ -88,6 +88,4 @@ Voyadix uses a decoupled client-server architecture to ensure high performance a
 2. **NLP Processing:** The custom `TRIPLinguist` engine (powered by spaCy) intercepts the prompt, extracting named entities (GPE) for location and cardinal numbers for duration.
 3. **Generation:** The recommendation engine builds a structured JSON itinerary based on the extracted parameters and context.
 4. **Persistence:** If authenticated, the system serializes the JSON itinerary and stores it in the relational database alongside a foreign key linking to the user's ID.
-
----
 
