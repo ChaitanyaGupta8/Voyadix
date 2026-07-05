@@ -1,4 +1,4 @@
-# ✈️ Voyadix: AI-Powered Travel Architect
+# Voyadix: AI-Powered Travel Architect
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=FastAPI&logoColor=white)
@@ -12,9 +12,9 @@ Voyadix is a full-stack AI travel itinerary generator that transforms natural la
 
 ---
 
-## ✨ Key Features
+## Key Features
 
-* **AI Prompt Engine:** Users can input natural, unstructured travel desires (e.g., "A relaxing 4-day beach trip to Bali"), which the NLP engine parses to extract destinations, durations, and travel intent.
+* **AI Prompt Engine:** Users can input natural, unstructured travel desires (e.g., "Design a 4 days beach trip to Bali"), which the NLP engine parses to extract destinations, durations, and travel intent.
 * **Intelligent Itinerary Generation:** Dynamically builds day-by-day schedules complete with location-specific activities and logical pacing.
 * **Secure Authentication:** Full JWT-based user authentication system allowing users to securely create accounts, log in, and manage sessions.
 * **Persistent Storage:** Users can save generated itineraries to their personal dashboard, utilizing a relational SQLite database via SQLAlchemy.
@@ -22,7 +22,7 @@ Voyadix is a full-stack AI travel itinerary generator that transforms natural la
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 **Frontend:**
 * React.js (Vite)
@@ -42,7 +42,7 @@ Voyadix is a full-stack AI travel itinerary generator that transforms natural la
 
 ---
 
-## 🚀 Local Development Setup
+## Local Development Setup
 
 If you would like to run this project locally, follow these steps:
 
@@ -80,7 +80,7 @@ npm run dev
 
 ---
 
-## 🏗️ Architecture & System Flow
+## 🏗️rchitecture & System Flow
 
 Voyadix uses a decoupled client-server architecture to ensure high performance and separation of concerns:
 
