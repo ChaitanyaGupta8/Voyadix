@@ -1,0 +1,464 @@
+/* Core Styling Rules */
+.app-container {
+  background-color: #FAF8F5;
+  color: #1A1A1A;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header Navbar Styles */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 80px;
+  background-color: #FAF8F5;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* USE THIS  IF YOU WANT TO SWITCH BACK TO MOUNTAIN/CANYON THEME  */
+/* 
+.logo-icon {
+  background-color: #D97706;
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+} */
+
+/* 1. Change the Logo Box Color */
+.logo-icon {
+  background-color: #0D9488; /* Tropical Teal (was #D97706) */
+  color: white;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+}
+
+.logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 32px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #666;
+  font-size: 15px;
+  font-weight: 500;
+  padding-bottom: 4px;
+}
+
+.nav-link.active {
+  color: #1A1A1A;
+  border-bottom: 2px solid #1A1A1A;
+}
+
+.auth-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.btn-signup {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: #1A1A1A;
+}
+
+.btn-login {
+  background-color: #1A1A1A;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* USE THIS  IF YOU WANT TO SWITCH BACK TO MOUNTAIN/CANYON THEME  */
+/* Hero Section with Search overlay */
+/* .hero-section {
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1800&q=80');
+  background-size: cover;
+  background-position: center;
+  padding: 100px 40px 140px;
+  text-align: center;
+  color: white;
+} */
+
+/* Update this inside src/App.css */
+.hero-section {
+  /* Fresh Tropical Beach Background (Nusa Penida / Thailand vibe) */
+  background-image: linear-gradient(rgba(0,15,30,0.2), rgba(0,15,30,0.5)), url('https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?auto=format&fit=crop&w=1800&q=80');
+  background-size: cover;
+  background-position: center;
+  padding: 100px 40px 140px;
+  text-align: center;
+  color: white;
+
+  /* Add these 4 lines to force center alignment */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.pill-badge {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  line-height: 1.15;
+  margin-top: 24px;
+  font-weight: 700;
+}
+
+.hero-title em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.hero-subtitle {
+  margin-top: 16px;
+  font-size: 16px;
+  opacity: 0.95;
+  line-height: 1.6;
+}
+
+.search-container {
+  max-width: 900px;
+  margin: 50px auto 0;
+}
+
+.tabs-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: -1px;
+  justify-content: flex-start;
+  padding-left: 20px;
+}
+
+.tab-btn {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px 12px 0 0;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.tab-btn.active {
+  background: white;
+  color: #1A1A1A;
+  border: 1px solid white;
+}
+
+.search-bar {
+  background: white;
+  border-radius: 0 24px 24px 24px;
+  display: flex;
+  padding: 12px 20px;
+  align-items: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.input-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 0 16px;
+}
+
+.input-group label {
+  font-size: 10px;
+  font-weight: 700;
+  color: #777;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  font-size: 15px;
+  color: #1A1A1A;
+  width: 100%;
+}
+
+.ui-divider {
+  width: 1px;
+  height: 40px;
+  background-color: #EAEAEA;
+}
+
+/* USE THIS  IF YOU WANT TO SWITCH BACK TO MOUNTAIN/CANYON THEME  */
+/* .search-submit-btn {
+  background-color: #064E3B;
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+} */
+
+/* 2. Change the Search Button Color */
+.search-submit-btn {
+  background-color: #0D9488; /* Tropical Teal (was #064E3B) */
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* Numbers Dashboard Strip */
+.metrics-section {
+  background-color: #111111;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 80px;
+  text-align: center;
+}
+
+.metric-block h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  margin: 0 0 4px 0;
+}
+
+.metric-block p {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: #888;
+  margin: 0;
+}
+
+/* Places Worth Packing For Track Styles */
+.carousel-section {
+  padding: 80px 80px;
+}
+
+.carousel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.carousel-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
+  margin: 0;
+}
+
+.carousel-controls button {
+  background: white;
+  border: 1px solid #EAEAEA;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  margin-left: 12px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.carousel-controls button:hover {
+  background: #1A1A1A;
+  color: white;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 20px;
+}
+
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.dest-card {
+  min-width: 320px;
+  height: 440px;
+  border-radius: 24px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.dest-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0.6) 100%);
+  z-index: 1;
+}
+
+.card-top-bar, .card-bottom-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card-bottom-bar {
+  align-items: flex-end;
+}
+
+.card-tag {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.card-rating {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.country-label {
+  font-size: 11px;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+
+.dest-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  margin: 4px 0 12px 0;
+}
+
+.price-label {
+  font-size: 11px;
+  color: #DDD;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.price-label strong {
+  font-size: 16px;
+  color: white;
+}
+
+.arrow-go-btn {
+  background: white;
+  color: #1A1A1A;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* --- AI PROMPT BAR STYLES --- */
+.ai-prompt-container {
+  margin-top: 500px;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px; /* Keeps it from touching edges on small screens */
+}
+
+.ai-prompt-wrapper {
+  background: white;
+  padding: 10px 10px 10px 20px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 750px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.sparkle-icon {
+  font-size: 22px;
+  margin-right: 15px;
+}
+
+.ai-prompt-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 17px;
+  font-family: inherit;
+  width: 100px;
+  color: #333;
+}
+
+.ai-prompt-input::placeholder {
+  color: #9CA3AF;
+}
+
+.ai-plan-btn {
+  background-color: #0D9488; /* Tropical Teal */
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 40px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.ai-plan-btn:hover {
+  background-color: #0F766E; /* Slightly darker teal on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(13, 148, 136, 0.4);
+}

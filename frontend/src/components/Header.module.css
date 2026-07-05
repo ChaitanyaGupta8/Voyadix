@@ -1,0 +1,53 @@
+/* src/components/Header.module.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 80px;
+  background-color: #FAF8F5;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoIcon {
+  background-color: #E66F4C; /* Accent Orange */
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.logoText {
+  font-size: 24px;
+}
+
+.nav ul {
+  display: flex;
+  gap: 30px;
+}
+
+.nav a {
+  font-size: 16px;
+}
+
+.authButtons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.login {
+  background-color: #111111;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: 600;
+}

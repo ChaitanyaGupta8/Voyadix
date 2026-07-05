@@ -1,0 +1,26 @@
+# --- Web, Auth & Database ---
+fastapi
+uvicorn
+sqlalchemy
+passlib[bcrypt]
+bcrypt==3.2.2
+python-jose[cryptography]
+pydantic
+pydantic[email]
+
+# --- Data Handling & Math ---
+pandas
+numpy
+scipy
+
+# --- NLP & Machine Learning ---
+spacy
+scikit-learn
+
+# --- Routing & Optimization ---
+networkx
+
+# --- Live Data & Web Scraping ---
+requests
+beautifulsoup4
+

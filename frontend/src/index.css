@@ -1,0 +1,29 @@
+/* src/index.css */
+/* Minimal Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* Using Inter for sans-serif and Playfair Display for serif as examples */
+  font-family: 'Inter', sans-serif;
+  background-color: #FAF8F5; /* The off-white background */
+  color: #111111; /* Deep charcoal text */
+}
+
+/* Headings use the serif font */
+h1, h2, h3, .logo-text {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
