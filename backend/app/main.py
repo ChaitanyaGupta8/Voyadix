@@ -12,10 +12,10 @@ from sqlalchemy.orm import Session
 from passlib.context import CryptContext
 from jose import JWTError, jwt
 
-from nlp_engine import TRIPLinguist
-from recommender import DynamicPOIRecommender
-from optimizer import ItineraryOptimizer
-from live_data import LiveDataManager
+from .nlp_engine import TRIPLinguist
+from .recommender import DynamicPOIRecommender
+from .optimizer import ItineraryOptimizer
+from .live_data import LiveDataManager
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
